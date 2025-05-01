@@ -4,6 +4,7 @@ import com.kinetoflow.backend.dto.*;
 import com.kinetoflow.backend.entity.User;
 import com.kinetoflow.backend.enums.UserRole;
 import com.kinetoflow.backend.exception.BadRequestException;
+import com.kinetoflow.backend.service.AppointmentService;
 import com.kinetoflow.backend.service.CalendarService;
 import com.kinetoflow.backend.service.CompanyAdminServiceManagementService;
 import com.kinetoflow.backend.service.InvitationService;
@@ -35,6 +36,8 @@ public class MedicController {
     private final CalendarService calendarService;
     private final PatientPlanService patientPlanService;
     private final InvitationService invitationService;
+    private final AppointmentService appointmentService; // Inject AppointmentService
+
 
     // === Patient Listing & Invites (Unchanged) ===
     @GetMapping("/my-patients")
@@ -170,4 +173,16 @@ public class MedicController {
         List<CalendarEventDto> events = calendarService.getMedicCalendarEvents(currentUser, start, end);
         return ResponseEntity.ok(events);
     }
+
+    // --- NEW: Create Appointment Endpoint ---
+    @PostMapping("/appointments")
+    public ResponseEntity<AppointmentDto> createAppointment(
+            @AuthenticationPrincipal User currentUser, // The logged-in medic
+            @Valid @RequestBody CreateAppointmentRequest request) {
+        log.info("Medic {} creating new appointment.", currentUser.getEmail());
+        // Service layer handles validation (patient assigned to medic, overlaps etc.)
+        AppointmentDto createdAppointment = appointmentService.createAppointment(currentUser, request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdAppointment);
+    }
+    // --- END NEW ---
 }
