@@ -4,7 +4,10 @@ package com.kinetoflow.backend.service;
 
 import com.kinetoflow.backend.dto.CalendarEventDto;
 import com.kinetoflow.backend.dto.CreateTimeBlockRequest; // Import new DTO
-import com.kinetoflow.backend.entity.*; // Import TimeBlock, Company etc.
+import com.kinetoflow.backend.entity.Appointment;
+import com.kinetoflow.backend.entity.Company;
+import com.kinetoflow.backend.entity.TimeBlock;
+import com.kinetoflow.backend.entity.User;
 import com.kinetoflow.backend.exception.BadRequestException; // Import exceptions
 import com.kinetoflow.backend.exception.ForbiddenException;
 import com.kinetoflow.backend.exception.ResourceNotFoundException;

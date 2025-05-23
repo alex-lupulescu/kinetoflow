@@ -2,6 +2,7 @@ package com.kinetoflow.backend.repository;
 
 import com.kinetoflow.backend.entity.Appointment;
 import com.kinetoflow.backend.entity.User;
+import com.kinetoflow.backend.enums.AppointmentStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -32,6 +33,17 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
             @Param("patient") User patient,
             @Param("startDate") LocalDateTime startDate,
             @Param("endDate") LocalDateTime endDate);
+
+    // Find appointments whose scheduled end time is in the past,
+    // are linked to a plan item, have not yet had a session consumed,
+    // and have an applicable status (e.g., SCHEDULED, COMPLETED)
+    @Query("SELECT a FROM Appointment a WHERE a.scheduledEndTime < :currentTime " +
+           "AND a.patientPlanServiceItem IS NOT NULL " +
+           "AND a.sessionConsumed = false " +
+           "AND a.status IN :statuses")
+    List<Appointment> findAppointmentsForSessionDecrement(
+            @Param("currentTime") LocalDateTime currentTime,
+            @Param("statuses") List<AppointmentStatus> statuses);
 
     // Add more specific queries as needed (e.g., find by status, find upcoming)
 }

@@ -9,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean; // Import Bean
 import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.EnableScheduling; // Import EnableScheduling
 import org.springframework.security.crypto.password.PasswordEncoder; // Import PasswordEncoder
 
 /**
@@ -17,6 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder; // Import P
  */
 @SpringBootApplication
 @EnableAsync // Enable asynchronous method execution
+@EnableScheduling // Enable scheduled task execution
 @Slf4j // Add Lombok logger
 public class KinetoflowBackendApplication {
 

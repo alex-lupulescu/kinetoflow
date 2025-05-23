@@ -1,6 +1,12 @@
 package com.kinetoflow.backend.service;
 
-import com.kinetoflow.backend.dto.*;
+import com.kinetoflow.backend.dto.CreatePackageRequest;
+import com.kinetoflow.backend.dto.CreateServiceRequest;
+import com.kinetoflow.backend.dto.PackageDto;
+import com.kinetoflow.backend.dto.ServiceDto;
+import com.kinetoflow.backend.dto.ServiceItemRequest;
+import com.kinetoflow.backend.dto.UpdatePackageRequest;
+import com.kinetoflow.backend.dto.UpdateServiceRequest;
 import com.kinetoflow.backend.entity.Company;
 import com.kinetoflow.backend.entity.Package;
 import com.kinetoflow.backend.entity.PackageServiceItem;

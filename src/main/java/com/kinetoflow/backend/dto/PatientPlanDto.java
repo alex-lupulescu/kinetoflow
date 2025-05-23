@@ -6,7 +6,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.Collections;
-import java.math.BigDecimal; // Import missing BigDecimal
 
 @Builder
 public record PatientPlanDto(

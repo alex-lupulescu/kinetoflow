@@ -4,7 +4,6 @@ import com.kinetoflow.backend.dto.DashboardStatsDto;
 import com.kinetoflow.backend.entity.Company;
 import com.kinetoflow.backend.entity.User;
 import com.kinetoflow.backend.enums.UserRole;
-import com.kinetoflow.backend.exception.ResourceNotFoundException;
 import com.kinetoflow.backend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

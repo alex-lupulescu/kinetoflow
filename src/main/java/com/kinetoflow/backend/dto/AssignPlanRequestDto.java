@@ -2,8 +2,6 @@ package com.kinetoflow.backend.dto;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.FutureOrPresent;
-import jakarta.validation.constraints.NotNull; // Use NotNull for objects like List
-import jakarta.validation.constraints.Size;
 
 import java.time.LocalDateTime;
 import java.util.List; // Use List for ordered items if needed, else Set

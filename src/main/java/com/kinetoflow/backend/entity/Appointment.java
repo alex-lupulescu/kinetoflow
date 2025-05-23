@@ -2,7 +2,6 @@ package com.kinetoflow.backend.entity;
 
 import com.kinetoflow.backend.enums.AppointmentStatus; // Create this enum
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Future; // For start/end times if validation needed here
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -77,6 +76,10 @@ public class Appointment {
     @UpdateTimestamp
     @Column(nullable = false)
     private LocalDateTime updatedAt;
+
+    @Column(nullable = false)
+    @Builder.Default
+    private Boolean sessionConsumed = false;
 
     // --- Basic equals/hashCode ---
     @Override

@@ -5,7 +5,6 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.hibernate.annotations.Check;
-import org.hibernate.annotations.Where; // Import Where
 
 import java.math.BigDecimal;
 
